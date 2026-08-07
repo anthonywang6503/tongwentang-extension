@@ -32,6 +32,7 @@ export interface PrefZhconvert {
   tryCount: number;
   timeoutMs: number;
   cooldownMs: number;
+  concurrency: number;
 }
 
 export interface PrefWord {

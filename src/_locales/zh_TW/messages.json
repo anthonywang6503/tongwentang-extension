@@ -185,6 +185,9 @@
   "MSG_ZHCONVERT_COOLDOWN": {
     "message": "冷卻時間"
   },
+  "MSG_ZHCONVERT_CONCURRENCY": {
+    "message": "併發請求數"
+  },
   "MSG_ZHCONVERT_RECOMMENDED": {
     "message": "建議值"
   },

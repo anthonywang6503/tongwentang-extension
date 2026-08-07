@@ -100,13 +100,15 @@ zhconvert Network Conversion Settings
   - Maximum duration for one request; the default is `3000 ms`.
 - Cooldown
   - Blocks new network requests after consecutive failures; the default is `30000 ms`.
+- Concurrent requests
+  - The global limit for remote requests across all pages; configurable from `1` to `10`, with a default of `3`.
 
 Failure handling
 
 1. Try the zhconvert network converter first.
 2. Retry immediately when a request times out or the API reports an error.
 3. Fall back to the local phrase converter and show one low-noise notification after all attempts fail.
-4. Do not start new network requests during the cooldown; retry network conversion after the cooldown expires.
+4. Do not start new network requests during the cooldown; queued requests that have not started fall back to local conversion, and network conversion resumes after the cooldown expires.
 
 This program uses the [zhconvert API](https://docs.zhconvert.org/api/0-getting-started/). Commercial use requires payment; see [zhconvert.org](https://zhconvert.org).
 

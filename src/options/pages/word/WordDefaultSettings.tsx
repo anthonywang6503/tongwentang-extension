@@ -27,7 +27,7 @@ export const ZhconvertSettings: FC<{
   const updateConverter = (key: 's2tConverter' | 't2sConverter') => (e: ChangeEvent<HTMLSelectElement>) =>
     onChange({ ...value, [key]: e.currentTarget.value as ZhconvertConverter });
   const updateNumber =
-    (key: 'tryCount' | 'timeoutMs' | 'cooldownMs', min: number, max: number, fallback: number) =>
+    (key: 'tryCount' | 'timeoutMs' | 'cooldownMs' | 'concurrency', min: number, max: number, fallback: number) =>
     (e: ChangeEvent<HTMLInputElement>) => {
       const next = Number.parseInt(e.currentTarget.value, 10);
       onChange({ ...value, [key]: Number.isFinite(next) ? Math.min(max, Math.max(min, next)) : fallback });
@@ -126,6 +126,19 @@ export const ZhconvertSettings: FC<{
         step="1000"
         value={value.cooldownMs}
         onChange={updateNumber('cooldownMs', 1000, 3600000, 30000)}
+      />
+      <label className="form-label" htmlFor="zhconvert-concurrency">
+        {i18n.getMessage('MSG_ZHCONVERT_CONCURRENCY')}{' '}
+        <span className="text-gray">（{i18n.getMessage('MSG_ZHCONVERT_RECOMMENDED')}：3）</span>
+      </label>
+      <input
+        id="zhconvert-concurrency"
+        className="form-input"
+        type="number"
+        min="1"
+        max="10"
+        value={value.concurrency}
+        onChange={updateNumber('concurrency', 1, 10, 3)}
       />
     </div>
   );

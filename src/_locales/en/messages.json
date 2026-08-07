@@ -185,6 +185,9 @@
   "MSG_ZHCONVERT_COOLDOWN": {
     "message": "Cooldown"
   },
+  "MSG_ZHCONVERT_CONCURRENCY": {
+    "message": "Concurrent requests"
+  },
   "MSG_ZHCONVERT_RECOMMENDED": {
     "message": "recommended"
   },

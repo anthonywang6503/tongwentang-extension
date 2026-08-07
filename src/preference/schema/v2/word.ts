@@ -28,6 +28,7 @@ const zhconvertSchema: Control<PrefZhconvert> = dctrl({
   tryCount: vctrl(vldFn(z.number().int().min(1).max(5)), 2),
   timeoutMs: vctrl(vldFn(z.number().int().min(500).max(30000)), 3000),
   cooldownMs: vctrl(vldFn(z.number().int().min(1000).max(3600000)), 30000),
+  concurrency: vctrl(vldFn(z.number().int().min(1).max(10)), 3),
 });
 
 export const wordSchema: Control<PrefWord> = dctrl({

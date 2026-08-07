@@ -13,6 +13,15 @@ interface ZhconvertResponse {
 
 let cooldownUntil = 0;
 let notificationUntil = 0;
+let activeRequests = 0;
+
+interface PendingRequest {
+  config: PrefZhconvert;
+  execute: () => Promise<string | undefined>;
+  resolve: (value: string | undefined) => void;
+}
+
+const pendingRequests: PendingRequest[] = [];
 
 const converterFor = (target: LangType, config: PrefZhconvert) =>
   target === LangType.s2t ? config.s2tConverter : config.t2sConverter;
@@ -57,16 +66,38 @@ const reportFailure = (config: PrefZhconvert) => {
     notificationUntil = cooldownUntil;
     void createNoti(i18n.getMessage('NT_ZHCONVERT_FAILED'), 3000, 'zhconvert-failed');
   }
+  pendingRequests.splice(0).forEach(({ resolve }) => resolve(undefined));
 };
 
-export const convertWithZhconvert = async (
-  target: LangType,
-  text: string,
-  config: PrefZhconvert,
-): Promise<string | undefined> => {
-  if (text === '' || Date.now() < cooldownUntil) return undefined;
+const drainRequests = () => {
+  while (pendingRequests.length > 0 && activeRequests < pendingRequests[0].config.concurrency) {
+    const pending = pendingRequests.shift()!;
+    if (Date.now() < cooldownUntil) {
+      pending.resolve(undefined);
+      continue;
+    }
 
+    activeRequests += 1;
+    void pending
+      .execute()
+      .then(pending.resolve)
+      .finally(() => {
+        activeRequests -= 1;
+        drainRequests();
+      });
+  }
+};
+
+const enqueueRequest = (config: PrefZhconvert, execute: () => Promise<string | undefined>) =>
+  new Promise<string | undefined>(resolve => {
+    pendingRequests.push({ config, execute, resolve });
+    drainRequests();
+  });
+
+const convertRequest = async (target: LangType, text: string, config: PrefZhconvert): Promise<string | undefined> => {
   for (let attempt = 0; attempt < config.tryCount; attempt += 1) {
+    if (Date.now() < cooldownUntil) return undefined;
+
     try {
       return await request(target, text, config);
     } catch {
@@ -76,4 +107,13 @@ export const convertWithZhconvert = async (
 
   reportFailure(config);
   return undefined;
+};
+
+export const convertWithZhconvert = (
+  target: LangType,
+  text: string,
+  config: PrefZhconvert,
+): Promise<string | undefined> => {
+  if (text === '' || Date.now() < cooldownUntil) return Promise.resolve(undefined);
+  return enqueueRequest(config, () => convertRequest(target, text, config));
 };
