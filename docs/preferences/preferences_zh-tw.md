@@ -78,7 +78,38 @@
 
 預設
 
-- 內建四個可以被開關的對應列表。
+- 內建簡轉正與正轉簡的單字、詞彙對應列表，可分別開關。
+- 「預設簡轉正詞彙：zhconvert 網路轉換」與「預設正轉簡詞彙：zhconvert 網路轉換」可分別啟用網路轉換。
+- 啟用後，詞彙會先送至 zhconvert API；網路請求失敗時，會立即改用本機詞彙轉換。
+
+zhconvert 網路轉換設定
+
+![詞彙預設頁面的 zhconvert 設定](../images/zhconvert-settings.png)
+
+![zhconvert 轉換器與容錯參數](../images/zhconvert-settings-detail.png)
+
+- API 網址
+  - 預設為 `https://api.zhconvert.org/convert`。
+  - 可指定相容的 API 端點；自訂端點需要符合 zhconvert `/convert` API 格式。
+- API Key
+  - 以瀏覽器本機偏好設定儲存，並隨請求送出。
+- 簡轉正 API 轉換器 / 正轉簡 API 轉換器
+  - 分別指定兩個方向使用的 zhconvert 轉換器，例如 `Traditional` 或 `Simplified`。
+- 重試次數
+  - 每次請求的最多嘗試次數，包含第一次請求；預設值為 `2`。
+- 逾時時間
+  - 單次請求的逾時上限；預設值為 `3000 ms`。
+- 冷卻時間
+  - 連續失敗後暫停新的網路請求；預設值為 `30000 ms`。
+
+容錯流程
+
+1. 先嘗試 zhconvert 網路轉換。
+2. 逾時或 API 回應失敗時，依設定的嘗試次數立即重試。
+3. 全部嘗試失敗後，立即使用本機詞彙轉換，並顯示一次低干擾通知。
+4. 冷卻期間不發出新的網路請求；冷卻結束後才會再次嘗試。
+
+本程式使用 [繁化姬 API](https://docs.zhconvert.org/api/0-getting-started/)；商業使用必須付費，詳情請參閱 [zhconvert.org](https://zhconvert.org)。
 
 自訂簡轉正 / 自訂正轉簡
 

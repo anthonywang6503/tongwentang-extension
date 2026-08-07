@@ -17,6 +17,12 @@ The Extension require several permissions inorder to work well.
 - `unlimitedStorage`
   - Custom domain rules and mapping words could be many.
 
+### Host Permission
+
+- `<all_urls>`
+  - Allows the user to configure a zhconvert API URL in the options page.
+  - Network phrase requests are made only when the corresponding zhconvert option is enabled.
+
 ### Optional Permissions
 
 - `clipboardWrite`

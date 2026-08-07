@@ -17,6 +17,12 @@
 - `unlimitedStorage`
   - 自訂的網址規則及轉換詞彙可能有多個。
 
+### 網站存取授權
+
+- `<all_urls>`
+  - 讓使用者在 zhconvert 設定中指定 API 網址。
+  - 網路詞彙轉換只會在使用者啟用對應方向的 zhconvert 功能時發出請求。
+
 ### 選擇性的授權
 
 - `clipboardWrite`

@@ -78,7 +78,37 @@ Domain Rule
 
 Default
 
-- There are four built-in mapping list which can turn on and off.
+- The built-in simplified-to-traditional and traditional-to-simplified character and phrase lists can be enabled independently.
+- Enable `zhconvert Network Conversion` for either direction to send default phrases to the configured zhconvert API.
+- Network conversion runs first. On timeout or API failure, the extension retries according to the configured attempt count and immediately falls back to the local phrase converter.
+
+zhconvert Network Conversion Settings
+
+![zhconvert settings in the default word preferences](../images/zhconvert-settings.png)
+
+![zhconvert converters and failover settings](../images/zhconvert-settings-detail.png)
+
+- API URL
+  - Defaults to `https://api.zhconvert.org/convert` and accepts a compatible `/convert` endpoint.
+- API Key
+  - Stored in the browser's local extension preferences and sent with the request.
+- Simplified-to-Traditional / Traditional-to-Simplified API Converter
+  - Select the zhconvert converter for each direction, such as `Traditional` or `Simplified`.
+- Try count
+  - Maximum attempts per request, including the first request; the default is `2`.
+- Timeout
+  - Maximum duration for one request; the default is `3000 ms`.
+- Cooldown
+  - Blocks new network requests after consecutive failures; the default is `30000 ms`.
+
+Failure handling
+
+1. Try the zhconvert network converter first.
+2. Retry immediately when a request times out or the API reports an error.
+3. Fall back to the local phrase converter and show one low-noise notification after all attempts fail.
+4. Do not start new network requests during the cooldown; retry network conversion after the cooldown expires.
+
+This program uses the [zhconvert API](https://docs.zhconvert.org/api/0-getting-started/). Commercial use requires payment; see [zhconvert.org](https://zhconvert.org).
 
 Custom Simplified to Traditional / Custom Traditional to Simplified
 

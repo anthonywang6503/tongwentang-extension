@@ -1,17 +1,35 @@
-# Build Instruction
+# 建置說明
 
-## Repository
+## 專案
 
 [tongwentang-extension](https://github.com/tongwentang/tongwentang-extension)
 
-## Environment
+## 環境
 
-- OS: [name] [build/version]
-- NodeJS: [version]
-- NPM: [name] [version]
+- Windows、macOS 或 Linux
+- Node.js 與 npm
 
-## Build Step
+## 安裝依賴
 
-- Run `yarn install` to install packages.
-- Run `yarn build:firefox` to build project.
-- If no error, the build result is locate in `/dist` under project root.
+在專案根目錄執行：
+
+```powershell
+npm install
+```
+
+## 建置與驗證
+
+型別檢查與 Lint：
+
+```powershell
+npm run test:tsc
+npx eslint .
+```
+
+建置 Firefox 與 Chromium 版本：
+
+```powershell
+npm run build:all
+```
+
+單獨建置可使用 `npm run build:firefox` 或 `npm run build:chromium`。成功後，產物位於 `dist/firefox` 與 `dist/chromium`。

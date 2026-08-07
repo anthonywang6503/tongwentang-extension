@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 未發佈
+
+### 新增
+
+- 詞彙預設支援 zhconvert 網路轉換，可分別設定簡轉正與正轉簡。
+- 新增 API 網址、API Key、轉換器、嘗試次數、逾時與冷卻時間設定。
+- 新增網路優先、本機轉換 failover、冷卻期間停止請求，以及低干擾失敗通知。
+- 新增 zhconvert API 使用說明與設定頁截圖。
+
+### 維護
+
+- 更新至可建置的最新相容依賴版本。
+
 ### [2.4.0](https://github.com/tongwentang/tongwentang-extension/compare/2.2.0...2.4.0) (2024-12-29)
 
 Manifest MV3 supported
