@@ -2,6 +2,7 @@ import { createConverterMap, type Converter } from 'tongwen-core';
 import { LangType, type DicObj, type SrcPack } from 'tongwen-core/dictionaries';
 import type { PrefWord } from '../../preference/types/v2';
 import { bgGetPref } from '../state/storage';
+import { convertWithZhconvert } from '../zhconvert';
 
 const getDict = async (dir: LangType, type: 'char' | 'phrase') => {
   return fetch(`dictionaries/${dir}-${type}.min.json`).then(async r => r.json() as Promise<DicObj>);
@@ -26,4 +27,13 @@ export const getConverter = async (): Promise<Converter> => {
         (queue = bgGetPref()
           .then(async pref => createSrcPack(pref.word))
           .then(src => (converter = createConverterMap(src)))));
+};
+
+export const convertPhrase = async (target: LangType, text: string, word: PrefWord): Promise<string> => {
+  if (word.default[target].zhconvert) {
+    const converted = await convertWithZhconvert(target, text, word.zhconvert);
+    if (converted !== undefined) return converted;
+  }
+
+  return getConverter().then(converter => converter.phrase(target, text));
 };

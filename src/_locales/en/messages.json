@@ -152,6 +152,42 @@
   "MSG_DEFAULT_T2S_WORD": {
     "message": "Default Traditional to Simplified Word"
   },
+  "MSG_DEFAULT_S2T_ZHCONVERT": {
+    "message": "Default Simplified to Traditional Word: zhconvert Network Conversion"
+  },
+  "MSG_DEFAULT_T2S_ZHCONVERT": {
+    "message": "Default Traditional to Simplified Word: zhconvert Network Conversion"
+  },
+  "MSG_ZHCONVERT_SETTINGS": {
+    "message": "zhconvert Network Conversion Settings"
+  },
+  "MSG_ZHCONVERT_NOTICE": {
+    "message": "This program uses the zhconvert API; commercial use requires payment."
+  },
+  "MSG_ZHCONVERT_API_URL": {
+    "message": "API URL"
+  },
+  "MSG_ZHCONVERT_API_KEY": {
+    "message": "API Key"
+  },
+  "MSG_ZHCONVERT_S2T_CONVERTER": {
+    "message": "Simplified to Traditional API Converter"
+  },
+  "MSG_ZHCONVERT_T2S_CONVERTER": {
+    "message": "Traditional to Simplified API Converter"
+  },
+  "MSG_ZHCONVERT_TRY_COUNT": {
+    "message": "Try count"
+  },
+  "MSG_ZHCONVERT_TIMEOUT": {
+    "message": "Timeout"
+  },
+  "MSG_ZHCONVERT_COOLDOWN": {
+    "message": "Cooldown"
+  },
+  "MSG_ZHCONVERT_RECOMMENDED": {
+    "message": "recommended"
+  },
   "MSG_CUSTOM_S2T": {
     "message": "Custom Simplified to Traditional"
   },
@@ -232,5 +268,8 @@
   },
   "NT_GRT_PRM_ONLY_USR_INTER": {
     "message": "Grant optional permission can only under user interaction, to give permission(s) please go extension permission tab"
+  },
+  "NT_ZHCONVERT_FAILED": {
+    "message": "zhconvert is temporarily unavailable; local conversion is being used"
   }
 }

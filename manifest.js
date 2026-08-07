@@ -34,6 +34,7 @@ const createManifest = vendor => {
       128: 'icons/tongwen-icon-128.png',
     },
     permissions: ['contextMenus', 'downloads', 'notifications', 'storage', 'tabs', 'unlimitedStorage'],
+    host_permissions: ['<all_urls>'],
     optional_permissions: ['clipboardWrite', 'clipboardRead'],
     background,
     content_scripts: [

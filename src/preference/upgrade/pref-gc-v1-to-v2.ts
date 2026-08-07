@@ -53,6 +53,7 @@ export function prefGcV1ToV2(v1Pref: PrefGcV1): PrefV2 {
         s2t: v1Pref.userPhrase.trad,
         t2s: v1Pref.userPhrase.simp,
       },
+      zhconvert: pref.word.zhconvert,
     },
   };
 }

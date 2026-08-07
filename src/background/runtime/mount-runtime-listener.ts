@@ -4,7 +4,7 @@ import type { BgReqAction } from '../../service/runtime/background';
 import { handleBgReqAction } from '../../service/runtime/background';
 import { detectLanguage } from '../../service/tabs/detect-language';
 import { convertClipboard } from '../clipboard';
-import { getConverter } from '../converter';
+import { convertPhrase } from '../converter';
 import { bgLog } from '../logger';
 import { bgGetPref } from '../state/storage';
 import { getTargetByAutoConvert } from './handle-get-auto-convert';
@@ -30,15 +30,12 @@ export function mountRuntimeListener() {
         case 'DetectLang':
           return handleBgReqAction(action, detectLanguage(sender.tab!.id));
         case 'NodesText':
-          return getConverter().then(async converter =>
-            handleBgReqAction(
-              action,
-              action.payload.texts.map(text => converter.phrase(action.payload.target, text)),
-            ),
-          );
+          return Promise.all(
+            action.payload.texts.map(text => convertPhrase(action.payload.target, text, pref.word)),
+          ).then(texts => handleBgReqAction(action, texts));
         case 'Convert':
-          return getConverter().then(async converter =>
-            handleBgReqAction(action, converter.phrase(action.payload.target, action.payload.text)),
+          return convertPhrase(action.payload.target, action.payload.text, pref.word).then(text =>
+            handleBgReqAction(action, text),
           );
         case 'ConvertClipboard':
           return handleBgReqAction(action, convertClipboard(action.payload));

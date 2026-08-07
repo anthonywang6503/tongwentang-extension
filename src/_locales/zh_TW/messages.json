@@ -152,6 +152,42 @@
   "MSG_DEFAULT_T2S_WORD": {
     "message": "預設正轉簡詞彙"
   },
+  "MSG_DEFAULT_S2T_ZHCONVERT": {
+    "message": "預設簡轉正詞彙：zhconvert 網路轉換"
+  },
+  "MSG_DEFAULT_T2S_ZHCONVERT": {
+    "message": "預設正轉簡詞彙：zhconvert 網路轉換"
+  },
+  "MSG_ZHCONVERT_SETTINGS": {
+    "message": "zhconvert 網路轉換設定"
+  },
+  "MSG_ZHCONVERT_NOTICE": {
+    "message": "本程式使用繁化姬 API；商業使用必須付費。"
+  },
+  "MSG_ZHCONVERT_API_URL": {
+    "message": "API 網址"
+  },
+  "MSG_ZHCONVERT_API_KEY": {
+    "message": "API Key"
+  },
+  "MSG_ZHCONVERT_S2T_CONVERTER": {
+    "message": "簡轉正 API 轉換器"
+  },
+  "MSG_ZHCONVERT_T2S_CONVERTER": {
+    "message": "正轉簡 API 轉換器"
+  },
+  "MSG_ZHCONVERT_TRY_COUNT": {
+    "message": "重試次數"
+  },
+  "MSG_ZHCONVERT_TIMEOUT": {
+    "message": "逾時時間"
+  },
+  "MSG_ZHCONVERT_COOLDOWN": {
+    "message": "冷卻時間"
+  },
+  "MSG_ZHCONVERT_RECOMMENDED": {
+    "message": "建議值"
+  },
   "MSG_CUSTOM_S2T": {
     "message": "自訂簡轉正"
   },
@@ -232,5 +268,8 @@
   },
   "NT_GRT_PRM_ONLY_USR_INTER": {
     "message": "請求選擇性授權只能在使用者互動下，請先到套件的授權分頁啟用"
+  },
+  "NT_ZHCONVERT_FAILED": {
+    "message": "zhconvert 暫時無法使用，已改用本機轉換"
   }
 }

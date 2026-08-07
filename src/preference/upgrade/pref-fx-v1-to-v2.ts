@@ -2,7 +2,7 @@ import { LangType } from 'tongwen-core/dictionaries';
 import { getRandomId } from '../../utilities';
 import { getDefaultPref } from '../default';
 import { patternRegExpify, regularOldPattern } from '../filter-rule';
-import type { PrefFxV1, PrefFxV1Filter} from '../types/v1';
+import type { PrefFxV1, PrefFxV1Filter } from '../types/v1';
 import { V1PrefFxActionEnum, V1PrefFxAutoConverterEnum } from '../types/v1';
 import type { AutoConvertOpt, BrowserActionOpt, FilterTarget, PrefFilterRule, PrefV2 } from '../types/v2';
 
@@ -54,6 +54,7 @@ export function prefFxV1ToV2(v1Pref: PrefFxV1): PrefV2 {
         s2t: v1Pref.userPhraseTradList,
         t2s: v1Pref.userPhraseSimpList,
       },
+      zhconvert: pref.word.zhconvert,
     },
   };
 }
