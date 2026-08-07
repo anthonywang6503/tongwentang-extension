@@ -1,3 +1,3 @@
-import type { ZodFirstPartySchemaTypes } from 'zod';
+import type { ZodType } from 'zod';
 
-export const vldFn = (schema: ZodFirstPartySchemaTypes) => (data: unknown) => schema.safeParse(data).success;
+export const vldFn = (schema: ZodType) => (data: unknown) => schema.safeParse(data).success;

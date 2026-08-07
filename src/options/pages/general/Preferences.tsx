@@ -1,4 +1,4 @@
-import type { FC, RefObject, SyntheticEvent} from 'react';
+import type { FC, RefObject, SyntheticEvent } from 'react';
 import { useCallback, useRef } from 'react';
 import { i18n } from '../../../service/i18n/i18n';
 import { exportPref } from '../../../service/storage/export-pref';
@@ -12,7 +12,7 @@ const onload = (event: ProgressEvent<FileReader>) => {
 };
 
 export const Preferences: FC = () => {
-  const ref = useRef<HTMLInputElement>();
+  const ref = useRef<HTMLInputElement>(null);
 
   const showDialog = useCallback(() => ref.current?.click(), [ref.current]);
 

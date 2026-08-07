@@ -1,4 +1,5 @@
 import { browser } from '../../service/browser';
+import type { Runtime } from 'webextension-polyfill';
 import type { BgReqAction } from '../../service/runtime/background';
 import { handleBgReqAction } from '../../service/runtime/background';
 import { detectLanguage } from '../../service/tabs/detect-language';
@@ -14,7 +15,7 @@ import { getTarget } from './handle-get-target';
  * background message handler
  */
 export function mountRuntimeListener() {
-  browser.runtime.onMessage.addListener(async (message, sender) => {
+  browser.runtime.onMessage.addListener(async (message: unknown, sender: Runtime.MessageSender) => {
     const action = message as BgReqAction;
     bgLog('[BG_RECEIVE_REQ] req:', action, 'sender:', sender);
 

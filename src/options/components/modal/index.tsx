@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react';
 export const Modal: FC<{
   isActive: boolean;
   head?: string;
-  footer?: JSX.Element | JSX.Element[];
+  footer?: ReactNode;
   children: ReactNode;
   onOk?: () => void;
   onCancel: () => void;

@@ -11,6 +11,4 @@ declare module 'webextension-polyfill' {
     const downloads: Downloads.Static | undefined;
     const tabs: Omit<Tabs.Static, 'detectLanguage'> & { detectLanguage?: Tabs.Static['detectLanguage'] };
   }
-
-  export = Browser;
 }
