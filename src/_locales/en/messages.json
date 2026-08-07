@@ -197,6 +197,12 @@
   "MSG_ZHCONVERT_LOG_EMPTY": {
     "message": "No zhconvert connection records"
   },
+  "MSG_ZHCONVERT_LOG_ONLY_FAILURES": {
+    "message": "Show failed connections only"
+  },
+  "MSG_ZHCONVERT_LOG_NO_FAILURES": {
+    "message": "No failed connection records"
+  },
   "MSG_ZHCONVERT_LOG_TIME": {
     "message": "Time"
   },

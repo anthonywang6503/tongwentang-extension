@@ -22,6 +22,7 @@ interface ZhconvertResponse {
 let cooldownUntil = 0;
 let notificationUntil = 0;
 let activeRequests = 0;
+const maxLogEntries = 300;
 const logs: ZhconvertLog[] = [];
 const logPorts = new Set<Runtime.Port>();
 
@@ -52,7 +53,7 @@ const broadcastLogMessage = (message: ZhconvertLogMessage) => {
 
 const appendLog = (log: ZhconvertLog) => {
   logs.push(log);
-  logs.length > 100 && logs.shift();
+  logs.length > maxLogEntries && logs.shift();
   broadcastLogMessage({ type: 'append', log });
 };
 

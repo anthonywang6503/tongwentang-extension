@@ -197,6 +197,12 @@
   "MSG_ZHCONVERT_LOG_EMPTY": {
     "message": "尚無 zhconvert 連線紀錄"
   },
+  "MSG_ZHCONVERT_LOG_ONLY_FAILURES": {
+    "message": "僅顯示失敗連線"
+  },
+  "MSG_ZHCONVERT_LOG_NO_FAILURES": {
+    "message": "尚無失敗連線紀錄"
+  },
   "MSG_ZHCONVERT_LOG_TIME": {
     "message": "時間"
   },

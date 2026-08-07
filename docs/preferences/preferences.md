@@ -112,7 +112,9 @@ Failure handling
 
 Connection log
 
-- The settings page displays the latest 100 zhconvert connection records in real time, including time, duration, character count, status, and the complete failure reason.
+- The settings page displays the latest 300 zhconvert connection records in real time, including time, duration, character count, status, and the complete failure reason.
+- Enable `Show failed connections only` to show actual remote connection failures only; cooldown records that fall back to local conversion are excluded.
+- The failure filter applies only to the current settings page and resets after leaving it.
 - The log exists only in background-process memory. It is not written to preferences or files, and is cleared when the extension reloads.
 - Use `Clear log` to remove all current records immediately.
 

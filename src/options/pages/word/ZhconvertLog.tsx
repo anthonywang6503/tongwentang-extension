@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import type { ChangeEvent, FC } from 'react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Runtime } from 'webextension-polyfill';
 import { i18n } from '../../../service/i18n/i18n';
@@ -9,6 +9,7 @@ import {
   type ZhconvertLogMessage,
 } from '../../../service/zhconvert/log';
 import { Button } from '../../components';
+import { Checkbox } from '../../components/forms';
 
 const logStatus = (status: ZhconvertLogEntry['status']) => {
   switch (status) {
@@ -23,6 +24,7 @@ const logStatus = (status: ZhconvertLogEntry['status']) => {
 
 export const ZhconvertLog: FC = () => {
   const [logs, setLogs] = useState<ZhconvertLogEntry[]>([]);
+  const [onlyFailures, setOnlyFailures] = useState(false);
   const portRef = useRef<Runtime.Port | null>(null);
 
   useEffect(() => {
@@ -50,6 +52,10 @@ export const ZhconvertLog: FC = () => {
   const clear = useCallback(() => {
     portRef.current?.postMessage({ type: 'clear' });
   }, []);
+  const changeOnlyFailures = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    setOnlyFailures(event.currentTarget.checked);
+  }, []);
+  const visibleLogs = onlyFailures ? logs.filter(log => log.status === 'failure') : logs;
 
   return (
     <section className="form-group">
@@ -63,8 +69,16 @@ export const ZhconvertLog: FC = () => {
           </Button>
         </div>
       </div>
-      {logs.length === 0 ? (
-        <p className="text-gray">{i18n.getMessage('MSG_ZHCONVERT_LOG_EMPTY')}</p>
+      <Checkbox
+        isSwitch={true}
+        label={i18n.getMessage('MSG_ZHCONVERT_LOG_ONLY_FAILURES')}
+        checked={onlyFailures}
+        onChange={changeOnlyFailures}
+      />
+      {visibleLogs.length === 0 ? (
+        <p className="text-gray">
+          {i18n.getMessage(onlyFailures ? 'MSG_ZHCONVERT_LOG_NO_FAILURES' : 'MSG_ZHCONVERT_LOG_EMPTY')}
+        </p>
       ) : (
         <div style={{ maxHeight: '18rem', overflow: 'auto' }}>
           <table className="table table-striped">
@@ -78,7 +92,7 @@ export const ZhconvertLog: FC = () => {
               </tr>
             </thead>
             <tbody>
-              {logs.map((log, index) => (
+              {visibleLogs.map((log, index) => (
                 <tr key={`${log.time}-${index}`}>
                   <td>{new Date(log.time).toLocaleTimeString()}</td>
                   <td>{logStatus(log.status)}</td>
