@@ -188,6 +188,42 @@
   "MSG_ZHCONVERT_CONCURRENCY": {
     "message": "Concurrent requests"
   },
+  "MSG_ZHCONVERT_LOG": {
+    "message": "zhconvert connection log"
+  },
+  "MSG_ZHCONVERT_LOG_CLEAR": {
+    "message": "Clear log"
+  },
+  "MSG_ZHCONVERT_LOG_EMPTY": {
+    "message": "No zhconvert connection records"
+  },
+  "MSG_ZHCONVERT_LOG_TIME": {
+    "message": "Time"
+  },
+  "MSG_ZHCONVERT_LOG_STATUS": {
+    "message": "Status"
+  },
+  "MSG_ZHCONVERT_LOG_DURATION": {
+    "message": "Duration"
+  },
+  "MSG_ZHCONVERT_LOG_CHAR_COUNT": {
+    "message": "Character count"
+  },
+  "MSG_ZHCONVERT_LOG_REASON": {
+    "message": "Reason"
+  },
+  "MSG_ZHCONVERT_LOG_SUCCESS": {
+    "message": "Success"
+  },
+  "MSG_ZHCONVERT_LOG_FAILURE": {
+    "message": "Failure"
+  },
+  "MSG_ZHCONVERT_LOG_COOLDOWN": {
+    "message": "Cooldown (local conversion)"
+  },
+  "MSG_ZHCONVERT_LOG_COOLDOWN_REASON": {
+    "message": "zhconvert is in cooldown; local conversion is being used"
+  },
   "MSG_ZHCONVERT_RECOMMENDED": {
     "message": "recommended"
   },

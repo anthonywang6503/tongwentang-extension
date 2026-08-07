@@ -6,9 +6,11 @@ import { listenMenusEvent } from './menu/listen';
 import { mountRuntimeListener } from './runtime';
 import { mountPrefListener } from './state/mount-pref-listener';
 import { bgInitialPref } from './state/storage';
+import { mountZhconvertLogListener } from './zhconvert';
 
 mountPrefListener();
 mountRuntimeListener();
+mountZhconvertLogListener();
 mountBrowserActionListener();
 mountCommandListener();
 listenMenusEvent();

@@ -188,6 +188,42 @@
   "MSG_ZHCONVERT_CONCURRENCY": {
     "message": "併發請求數"
   },
+  "MSG_ZHCONVERT_LOG": {
+    "message": "zhconvert 連線日誌"
+  },
+  "MSG_ZHCONVERT_LOG_CLEAR": {
+    "message": "清除日誌"
+  },
+  "MSG_ZHCONVERT_LOG_EMPTY": {
+    "message": "尚無 zhconvert 連線紀錄"
+  },
+  "MSG_ZHCONVERT_LOG_TIME": {
+    "message": "時間"
+  },
+  "MSG_ZHCONVERT_LOG_STATUS": {
+    "message": "狀態"
+  },
+  "MSG_ZHCONVERT_LOG_DURATION": {
+    "message": "耗時"
+  },
+  "MSG_ZHCONVERT_LOG_CHAR_COUNT": {
+    "message": "轉換字數"
+  },
+  "MSG_ZHCONVERT_LOG_REASON": {
+    "message": "原因"
+  },
+  "MSG_ZHCONVERT_LOG_SUCCESS": {
+    "message": "成功"
+  },
+  "MSG_ZHCONVERT_LOG_FAILURE": {
+    "message": "失敗"
+  },
+  "MSG_ZHCONVERT_LOG_COOLDOWN": {
+    "message": "冷卻中（本機轉換）"
+  },
+  "MSG_ZHCONVERT_LOG_COOLDOWN_REASON": {
+    "message": "zhconvert 正在冷卻，已改用本機轉換"
+  },
   "MSG_ZHCONVERT_RECOMMENDED": {
     "message": "建議值"
   },

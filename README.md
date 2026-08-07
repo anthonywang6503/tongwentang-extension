@@ -42,6 +42,8 @@
 
 建議先使用預設值。連續失敗時會顯示一次低干擾通知，並在冷卻時間內直接走本機轉換；尚未送出的排隊請求也會改走本機轉換。冷卻結束後才會再次嘗試網路服務。
 
+設定頁會即時顯示最近 100 筆 zhconvert 連線日誌，包含時間、耗時、轉換字數與連線失敗原因。日誌只存在於背景程序記憶體，可手動清除，重新載入擴充功能後不會保留。
+
 本功能使用 [繁化姬 API](https://docs.zhconvert.org/api/0-getting-started/)，轉換端點依照 [`/convert` API 規格](https://docs.zhconvert.org/api/convert/) 傳送 `text` 與 `converter`。本程式使用繁化姬 API；商業使用必須付費，詳情請參閱 [zhconvert.org](https://zhconvert.org)。
 
 ## 下載

@@ -110,6 +110,12 @@ Failure handling
 3. Fall back to the local phrase converter and show one low-noise notification after all attempts fail.
 4. Do not start new network requests during the cooldown; queued requests that have not started fall back to local conversion, and network conversion resumes after the cooldown expires.
 
+Connection log
+
+- The settings page displays the latest 100 zhconvert connection records in real time, including time, duration, character count, status, and the complete failure reason.
+- The log exists only in background-process memory. It is not written to preferences or files, and is cleared when the extension reloads.
+- Use `Clear log` to remove all current records immediately.
+
 This program uses the [zhconvert API](https://docs.zhconvert.org/api/0-getting-started/). Commercial use requires payment; see [zhconvert.org](https://zhconvert.org).
 
 Custom Simplified to Traditional / Custom Traditional to Simplified

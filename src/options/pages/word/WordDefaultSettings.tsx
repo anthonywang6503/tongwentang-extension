@@ -4,6 +4,7 @@ import type { PrefWordDefault, PrefZhconvert, ZhconvertConverter } from '../../.
 import { i18n } from '../../../service/i18n/i18n';
 import { Button } from '../../components';
 import { Checkbox, Select } from '../../components/forms';
+import { ZhconvertLog } from './ZhconvertLog';
 
 const converterOptions: [ZhconvertConverter, string][] = [
   ['Simplified', '簡體化'],
@@ -237,6 +238,7 @@ export const WordDefaultSettings: FC<{
         onChange={upTcZhconvert}
       />
       <ZhconvertSettings value={zhconvert} onChange={handleZhconvertChange} />
+      <ZhconvertLog />
       <Button type="primary" onClick={handleSave}>
         {i18n.getMessage('MSG_SAVE')}
       </Button>
